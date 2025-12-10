@@ -6,8 +6,10 @@
 **Herb Stephens**
 *with Santi Siri*
 
-TIME Protocol Foundation
-First Edition — December 2025
+TIME Protocol [Singapore]
+with Democracy Earth Foundation [U.S.A.]
+
+First Edition — v1.0 - December 2025
 
 ---
 
