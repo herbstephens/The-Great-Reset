@@ -918,9 +918,9 @@ TIME Protocol is the infrastructure that makes it possible.
 
 ## Contact
 
-**Website**: timeprotocol.org
+**Website**: timedao.net
 
-**Email**: hello@timeprotocol.org
+**Email**: hello@timedao.net
 
 **Twitter**: @TIMEProtocol
 
