@@ -11,3 +11,48 @@ Milestone NFT: https://worldscan.org/address/0x0a2759241d0cb610e3e61db351813ddf8
 The new refactored version (v2) is complete on the smart contract side, but Franco has not connected to the frontend yet. only the original v1 flow is integrated right now.
 
 So for anything frontend-related you should show the v1 demo, but for technical and protocol design you can show the new contracts 
+
+Architecture we currently have live and verified on World Chain:
+
+HumanBond (Core Engine)
+
+The main contract that coordinates the full marriage flow:
+    •    handles World ID verification for both partners
+    •    Both sides can view  proposals sent and received 
+    •    manages the proposal → acceptance lifecycle plus divorce 
+    •    mints the VowNFT when they get married 
+    •    calculates the TIME yield internally
+    •    mints TIME tokens only when one of partners claim (or at divorce)
+    •    users can trigger MilestoneNFTs on anniversaries
+
+This is the logic layer, everything passes through HumanBond.
+
+TIME Token (ERC-20)
+
+A yield-style token earned by the couple over time.
+Key details:
+    •    yield is calculated inside HumanBond
+    •    minting only happens when the couple chooses to claim
+    •    cannot be minted arbitrarily, strictly controlled by HumanBond
+
+VowNFT (Soulbound Marriage NFT)
+
+Dynamic metadata NFT that represents the marriage itself:
+    •    stores the two partner addresses
+    •    stores the timestamp of the marriage + unique marriage ID
+    •    intentionally non-transferable (soulbound)
+    •    metadata can be updated by the contract (reflect state changes)
+
+
+MilestoneNFT (Anniversary NFTs)
+
+Configurable milestone NFTs:
+    •    1, 2, 3, 4+ year CIDs already mapped
+    •    I added dynamic, updatable metadata, so you can update IPFS links post-deployment
+    •    minting is triggered by HumanBond on milestone checks
+ Our Current Status
+    •    All contracts deployed + verified
+    •    Architecture is complete and functional
+    •    v2 refactor is smart-contract complete but not yet wired to frontend
+    •    System is mini-app ready after frontend integration
+
