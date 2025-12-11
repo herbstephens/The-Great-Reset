@@ -1,0 +1,13 @@
+All of the smart contracts are fully deployed and verified on World Chain. If you want to showcase the technical progress, you can point to the verified contracts. Here are the links:
+
+Human Bond main Engine: https://worldscan.org/address/0x6494daa4e693F748Eb0a16041ECfCEd51392bB13
+
+time etc-20 token: https://worldscan.org/address/0x261f6d89491cbadff7813303363a514f4b226a82
+
+vow NFT: https://worldscan.org/address/0xa1650cc531c2780fb8c006f4b8d314018f7f9ac9
+
+Milestone NFT: https://worldscan.org/address/0x0a2759241d0cb610e3e61db351813ddf8a52f14c
+
+The new refactored version (v2) is complete on the smart contract side, but Franco has not connected to the frontend yet. only the original v1 flow is integrated right now.
+
+So for anything frontend-related you should show the v1 demo, but for technical and protocol design you can show the new contracts 
