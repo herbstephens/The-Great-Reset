@@ -1,6 +1,6 @@
 # Herb Stephens — Speaker
 
-**Co-Founder, Democracy Earth Foundation and TIME Protocol**
+**Co-Founder, Democracy Earth Foundation and Founder of TIME Protocol**
 
 > *"The game is over. Not because we are angry. Because a game where new players cannot win is not a game anymore."*
 
@@ -11,8 +11,8 @@
 [![Book a Call](https://img.shields.io/badge/Book%20a%20Call-cal.com-f59e0b?style=for-the-badge)](https://cal.com/herbstephens)
 
 **Credentials:**
-- ✓ Proof of Humanity #1
-- ✓ Democracy Earth Foundation
+- ✓ 30-yr Silicon Valley Software Entrepreneur
+- ✓ 12-yr blockchain expert
 - ✓ Based in Lisbon, Available Worldwide
 
 ---
@@ -20,7 +20,7 @@
 ## Speaking Topics
 
 ### 01 — The Great Reset: A Plan for All of Us
-The flagship keynote. Land Commons, Worker Ownership, TIME Protocol — why the current system is ending and what replaces it.  
+The flagship keynote. Universal Basic Income or "UBI" as Necessary for Modern Democracy, Land Commons, Worker Ownership, TIME Protocol — why the current system is nearing its end-game and what resets it.  
 📍 *45-60 min*
 
 ### 02 — TIME Protocol: The Global Ledger for Human Time
@@ -41,15 +41,15 @@ As PoH #1, the journey of building human verification systems. Privacy, sybil re
 
 | Tier | Fee | Format |
 |------|-----|--------|
-| **Virtual** | $2,500+ | Remote keynote, virtual workshop, podcast (30-60 min) |
-| **Conference** ⭐ | $5,000 + travel | In-person keynote, panel, fireside chat (45-60 min + Q&A) |
-| **Premium** | $10,000 + travel | Full-day workshop, corporate retreat, VIP briefing |
+| **Virtual** | $2,500/hr | Remote keynote, virtual workshop, podcast (per 60 min) |
+| **In-Person** ⭐ | $25,000/day + travel | In-person keynote, panel, fireside chat |
+| **Custom** | free + travel | causes and non-profits: please inquire for alignment! |
 
 ---
 
 ## About
 
-Herb Stephens builds from places the world forgot, because that's where the future begins. As the first verified human in Proof of Humanity, he helped pioneer decentralized identity systems that now influence global Web3 infrastructure.
+Herb Stephens builds from places the world forgot, because that's where the future begins. 
 
 Co-founded with **Santi Siri** (Democracy Earth Foundation), TIME Protocol is creating a global ledger for human time — where 1 TIME token equals 1 verified hour of human work.
 
@@ -61,7 +61,7 @@ Co-founded with **Santi Siri** (Democracy Earth Foundation), TIME Protocol is cr
 | **Buenos Aires** | Through co-founder Santi Siri. Reset by chaos, repeatedly. |
 | **Lisbon, Portugal** | Where empires end. Reset by history. |
 
-**Languages:** English, Spanish, Portuguese
+**Language:** English
 
 ---
 
@@ -69,7 +69,7 @@ Co-founded with **Santi Siri** (Democracy Earth Foundation), TIME Protocol is cr
 
 📅 **Book a Call:** [cal.com/herbstephens](https://cal.com/herbstephens)
 
-📧 **Email:** herb@timeprotocol.org
+📧 **Email:** herb@democracy.earth
 
 🐦 **Twitter/X:** [@herbstephens](https://twitter.com/herbstephens)
 
