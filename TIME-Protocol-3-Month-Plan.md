@@ -24,10 +24,10 @@ TIME Protocol is building the infrastructure for a global economic reset schedul
 |------|------|-------|
 | **Herb Stephens** | Founder, Board Chair | Vision, strategy, fundraising |
 | **Santi Siri** | Co-Founder, Board | Ecosystem, Democracy Earth integration |
-| **Coco** | Board Member | Governance, operations, legal |
-| **Leticia** | Smart Contracts Lead | Solidity, security, audits |
-| **Franco** | Front-End Lead | UI/UX, React, Web3 |
-| **Axel** | Full-Stack | Backend, infrastructure |
+| **C** | Board Member | Governance, operations, legal |
+| **L** | Smart Contracts Lead | Solidity, security, audits |
+| **F** | Front-End Lead | UI/UX, React, Web3 |
+| **A** | Full-Stack | Backend, infrastructure |
 
 ---
 
@@ -68,7 +68,7 @@ Security review and gas optimization. Prepare for external audit. Launch marketi
 | Treasury/Foundation | 30% |
 | Community/Ecosystem | 13% |
 
-Vesting: 4-year schedule with 1-year cliff.
+Vesting: 2-year schedule with 3-mon cliff.
 
 ---
 
@@ -146,8 +146,8 @@ This is how the board clears. Same game. Same rules. New starting positions.
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
-| 1.0 | December 2025 | Herb Stephens | Initial version |
-| 1.1 | December 2025 | Herb Stephens | Added Reset timeline appendix |
+| 1.0 | December 2025 | HS | Initial version |
+| 1.1 | December 2025 | HS | Added Reset timeline appendix |
 
 ---
 
