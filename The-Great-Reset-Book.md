@@ -358,15 +358,15 @@ See you there.
 
 # About the Author
 
-Herb Stephens spent his high school years in Flint, Michigan. He now lives in Lisbon, Portugal.
+Herb Stephens spent his high school years in Flint, Michigan, before enjoying a lengthy and quite global career as a serial software entrepreneur. Herb lived in San Francisco for over 30 years,but now lives in Lisbon, Portugal, visiting home State of Alaska when possible.
 
-He is the co-founder of TIME Protocol, alongside Santi Siri, who co-founded Democracy Earth Foundation and pioneered blockchain democracy in Argentina. Herb was Proof of Humanity #1—the first verified human in the system.
+Herb founded the TIME Protocol and co-founded the Democracy Earth Foundation, alongside Santi Siri who is pioneering modern democracy from  Spain and Argentina.
 
 TIME Protocol operates through a Singapore-based for-profit entity, governed by a three-member Board: Herb Stephens, Santi Siri, and Coco. This entity works in conjunction with the non-profit Democracy Earth Foundation to advance global economic justice through technological innovation.
 
 Herb builds from places the world forgot, because he believes that's where the future begins.
 
-**timeprotocol.org**
+**democracy.earth**
 
 ---
 
