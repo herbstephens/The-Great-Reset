@@ -4,7 +4,6 @@
 ### January 1, 2030
 
 **Herb Stephens**
-*with Santi Siri*
 
 TIME Protocol [Singapore]
 with Democracy Earth Foundation [U.S.A.]
@@ -352,6 +351,7 @@ I believe we can choose. I believe we must.
 
 ## January 1, 2030
 
+Claim your home. Claim your work. Claim your time. Claim your data.
 See you there.
 
 ---
