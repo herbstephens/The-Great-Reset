@@ -85,6 +85,25 @@ TIME Protocol serves as critical infrastructure for the coordinated global econo
 - **Worker ownership tracking** for the Ownership Rebalance program
 - **Universal identity layer** connecting all Reset components
 
+### 1.5 Distinguishing from the WEF "Great Reset"
+
+The phrase "The Great Reset" was prominently used by the World Economic Forum (WEF) beginning in 2020, when founder Klaus Schwab proposed coordinated global restructuring in response to the COVID-19 pandemic. TIME Protocol's Great Reset shares the recognition that fundamental economic restructuring is necessary, but represents a philosophically opposite approach:
+
+| Dimension | WEF Great Reset | TIME Protocol Great Reset |
+|-----------|-----------------|---------------------------|
+| **Design Origin** | Top-down: Davos elites, corporate executives | Bottom-up: Verified humans via decentralized governance |
+| **Implementation** | Corporate pledges, government partnerships | Smart contracts, immutable protocols |
+| **Power Structure** | Reinforces centralization via stakeholder capitalism | Distributes power via Commons governance |
+| **Identity System** | Government/corporate-controlled digital ID | World ID: privacy-preserving, self-sovereign |
+| **Trust Model** | Trust institutions to implement promises | Trustless: code executes regardless of approval |
+| **Land Approach** | ESG frameworks, corporate sustainability pledges | Land Commons Protocol with algorithmic valuation |
+| **Labor Approach** | Corporate diversity initiatives | Worker ownership via transparent on-chain accumulation |
+| **Enforcement** | Voluntary corporate compliance | Protocol-level: unstoppable once deployed |
+
+**The core distinction**: The WEF's proposal asks humanity to trust that the winners of the current system will voluntarily redesign it more fairly. TIME Protocol eliminates the need for such trust by encoding economic rights into self-executing smart contracts on censorship-resistant infrastructure.
+
+We deliberately reclaim the phrase "The Great Reset" to assert that economic restructuring is inevitable—the only question is whether it is designed by concentrated power or distributed humanity. TIME Protocol chooses the latter.
+
 ---
 
 ## 2. The Problem: The Invisible Time Economy
@@ -918,9 +937,9 @@ TIME Protocol is the infrastructure that makes it possible.
 
 ## Contact
 
-**Website**: timedao.net
+**Website**: democracy.earth
 
-**Email**: hello@timedao.net
+**Email**: hello@democracy.earth
 
 **Twitter**: @TIMEProtocol
 
