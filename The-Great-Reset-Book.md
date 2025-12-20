@@ -84,6 +84,20 @@ The rules say everyone has an equal chance. The rules lie.
 
 This is not a metaphor. This is the global economy. The board was claimed centuries ago through colonization, enclosure, and conquest. The rules were written by winners to ensure more winning. And now we pretend that the game is fair, that anyone can succeed if they just try hard enough, that the wealth of billionaires reflects their superior contribution to humanity.
 
+## What Happens When the Game Ends
+
+But here is what everyone who has played Monopoly knows: **the game ends.** And when it ends, everything returns to the bank.
+
+Every property deed. Every railroad. Every utility. Every hotel and house. The winner counts their cash, celebrates their victory, and then—everything goes back in the box. The board clears. The next game starts fresh.
+
+This is not punishment. This is not theft from the winner. The winner still won. They played better, or luckier, or more ruthlessly than everyone else. They can take pride in their victory. But the game is over, and the pieces return to the bank so that the next game can begin.
+
+**This is what we have forgotten.** We have been playing the same game for five hundred years without ever putting the pieces back. The winners of 1600 passed their winnings to their children, who passed them to their children, who passed them to theirs. The game never reset. The board never cleared. And now we act as if those ancient victories created permanent, hereditary claims on the earth itself.
+
+Land titles are not natural law. They are game pieces. They were created by legal systems that humans invented, and they can be dissolved by legal systems that humans create. The land itself does not know or care who holds the paper. The earth belongs to no one and everyone. It always has.
+
+When the Great Reset comes, the land titles return to the bank. Not to a government. Not to a corporation. To the Commons—the shared inheritance of all humanity. The game pieces go back in the box. And then, finally, we can start a game where everyone begins equal.
+
 ## The Numbers
 
 The eight richest people in the world own as much wealth as the poorest half of humanity—nearly four billion people. The richest 1% own more than the remaining 99% combined.
@@ -214,6 +228,36 @@ Conservative estimates:
 
 This is a floor, not a ceiling. National and local programs can build on top of this foundation. But the baseline—a dividend from the earth to every human—is guaranteed.
 
+## When Businesses Become Utilities
+
+Land is not the only thing that belongs to everyone.
+
+Consider Amazon. One man—Jeff Bezos—started a company selling books online. Through brilliant strategy, relentless execution, and favorable market conditions, that company grew into something else entirely: **essential infrastructure.** Amazon is no longer merely a business. It is the logistics backbone of the global economy. It is cloud computing for half the internet. It is the default marketplace where billions of transactions occur.
+
+Congratulations, Mr. Bezos. You won.
+
+You played the game better than almost anyone in history. You saw opportunities others missed. You built systems of unprecedented scale and efficiency. You became one of the wealthiest humans who ever lived. You won, and no one can take that victory from you.
+
+**But here is what victory means when the game ends:** The utility you created belongs to everyone.
+
+You did not create the internet. You did not create the roads your trucks drive on. You did not create the legal system that enforces your contracts, the educated workforce that runs your warehouses, the public infrastructure that makes commerce possible. You built on top of what humanity built together—and what you built has now become part of that shared foundation.
+
+This is not punishment. This is not theft. You keep everything you accumulated along the way—every dollar, every yacht, every mansion, every rocket ship. Your personal wealth remains yours. But the utility itself—the infrastructure that society now depends upon—that returns to the Commons, just like the land returns to the Commons.
+
+**The same principle applies to every company that has become essential infrastructure:**
+
+- **Google**: You won the search engine game. You created the map of human knowledge. Congratulations—now the map belongs to humanity.
+- **Meta**: You won the social network game. You created the town square of the digital age. Congratulations—now the square belongs to everyone who gathers there.
+- **Microsoft**: You won the operating system game. You created the foundation on which the digital economy runs. Congratulations—now that foundation is public infrastructure.
+
+This is not communism. The state does not seize these companies. They transition to Commons governance—owned by the humans who use them, governed by the communities they serve, operated as public utilities rather than private fiefdoms.
+
+The founders keep their wealth. They can start new companies, play new games, win new victories. But when a business becomes so essential that society cannot function without it, it has graduated from private enterprise to public infrastructure. It returns to the bank so the next game can begin.
+
+**How do we know when a company has become a utility?** When the thought of it disappearing causes systemic panic. When governments consider it "too big to fail." When its services are assumed as default infrastructure. When opting out is no longer a realistic choice for ordinary people.
+
+By these measures, we already know which companies qualify. The only question is whether we have the courage to act on what we know.
+
 ---
 
 # Part III: Your Work Belongs to You
@@ -274,13 +318,21 @@ You won. And now the game is over.
 
 ## What We Are Not Asking
 
-The Great Reset does not ask you to give up what you have. You keep your wealth. Every dollar, every property, every company. The Reset does not confiscate.
+The Great Reset does not ask you to give up what you have. You keep your wealth. Every dollar. Every yacht. Every private island. Every rocket company. The Reset does not confiscate your personal fortune.
 
-What changes is the system going forward:
+What changes is simpler—and more profound:
 
-- The land beneath your properties enters the Commons. You pay fees; you also receive your per-capita share.
-- Your workers begin accumulating ownership. Your control dilutes over decades, not overnight.
-- The endless concentration of wealth slows, then stops, then reverses.
+**The game pieces return to the bank.**
+
+The land beneath your properties enters the Commons. You pay fees; you also receive your per-capita share (like everyone else—your share is no larger than a factory worker's or a farmer's).
+
+The utilities you created—the essential infrastructure that society now depends upon—transition to Commons governance. If you built Amazon, you keep your $150 billion. But Amazon itself, the logistics backbone of the global economy, becomes public infrastructure. If you built Google, you keep your fortune. But the search engine, the map of human knowledge, belongs to humanity.
+
+**Congratulations. You won. Now hand over the utility you created for everyone.**
+
+This is what happens when Monopoly ends. The winner counts their cash, takes pride in their victory, and then the properties go back in the box. You played brilliantly. You won. And now the board clears so the next game can begin.
+
+Your workers begin accumulating ownership in whatever enterprises continue. Your control dilutes over decades, not overnight. The endless concentration of wealth slows, then stops, then reverses.
 
 ## Why You Should Join
 
@@ -288,9 +340,11 @@ History does not treat kindly those who cling to privilege while the world chang
 
 But consider:
 
-- Your children will live in whatever world we create. Do you want them to inherit a fortress or a community?
-- The alternative to planned Reset is unplanned collapse. The French aristocracy discovered this in 1789.
-- Your legacy is not measured in dollars. It is measured in how you used your position at this moment.
+- Your children will live in whatever world we create. Do you want them to inherit a fortress surrounded by an angry world, or a seat at the table of a functioning society?
+- The alternative to planned Reset is unplanned collapse. The French aristocracy discovered this in 1789. They could have negotiated. They chose to resist. Their children paid the price.
+- Your legacy is not measured in dollars. History will not remember your net worth. It will remember whether you helped or hindered the transition that was coming regardless.
+
+You have more to lose from chaos than anyone. A coordinated Reset protects your personal wealth while transitioning the infrastructure to common ownership. An uncoordinated collapse protects nothing.
 
 Join us. Help design the transition. Be remembered as someone who, when the game ended, helped start a better one.
 

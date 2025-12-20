@@ -17,9 +17,15 @@ The rules say everyone gets $200 when they pass Go. But what good is $200 when a
 
 This is not a metaphor. This is the world.
 
+**But here is what everyone who plays Monopoly knows:** When the game ends, everything returns to the bank. Every property deed. Every hotel. Every railroad. The winner counts their cash—and then the board clears. The game starts fresh.
+
+We have been playing the same game for five hundred years. The winners of 1600 passed their winnings to their children, who passed them to theirs. The game never ended. The board never cleared.
+
+**Until now.**
+
 The eight richest people own as much as half the world's population. Not because they work harder—no one can work a billion times harder than anyone else. Because the game has been running so long that winning creates more winning, and losing creates more losing.
 
-**The game is over.** Not because we are angry. Not because we want revenge. Because a game where new players cannot win is not a game anymore. It is just a system for transferring wealth from those who have little to those who have much.
+**The game is over.** The pieces return to the bank. The land returns to the Commons. A new game begins—one where everyone starts equal.
 
 It is time to reset.
 
@@ -66,6 +72,20 @@ The money flows directly to every verified human on Earth. The planet pays you a
 
 ---
 
+# When the Game Ends, Everything Returns to the Bank
+
+Everyone who has played Monopoly knows: when the game ends, the properties go back in the box. The winner counts their cash, takes their victory—and the board clears for the next game.
+
+**Land titles return to the Commons.** Not to governments. Not to corporations. To all of us, together.
+
+**Utilities return to the people.** When a company becomes essential infrastructure—when society cannot function without it—it graduates from private enterprise to public good.
+
+Amazon. Google. Meta. Microsoft. The companies that became the roads and bridges of the digital economy. Congratulations to their founders—they won. They keep their billions. But the utilities themselves? Those belong to everyone who depends on them.
+
+This is not punishment. This is what "game over" means. The winners keep their winnings. But the pieces go back in the box.
+
+---
+
 # Your Work Belongs to You
 
 If you work for a company for thirty years and then retire with nothing, something is wrong. You did not just exchange time for money. You built something. You created value. You made the company possible.
@@ -100,23 +120,29 @@ Combined with your share of the Commons, this creates a foundation. Not wealth, 
 
 You won. Congratulations.
 
-You played the game well. You were smart, or lucky, or ruthless, or all three. You accumulated wealth beyond anything most humans can imagine. You have yachts and jets and homes on every continent.
-
-You won.
+You played the game better than almost anyone. You accumulated more wealth than pharaohs, more power than emperors. You won, and no one can take that from you.
 
 And now the game is over.
 
-This is not punishment. This is not revenge. You keep what you have. Every dollar, every property, every company. The Reset does not take from you.
+**Here is what winning means when the game ends:**
 
-But going forward, the rules change. The land beneath your properties enters the Commons. Your workers begin accumulating ownership. The endless concentration of wealth slows, then stops, then reverses.
+You keep your billions. Every dollar. Every yacht. Every private island.
 
-**You have a choice.** You can fight this. You can use your wealth and power to delay, to obstruct, to protect the old game. You might succeed for a while.
+But the land beneath your empire? That returns to the Commons.
 
-Or you can join us.
+The utility you built—the infrastructure society now depends on? That belongs to everyone.
 
-History remembers those who, at moments of transformation, chose to be on the right side. You can be remembered as someone who helped build a better world—or as someone who clung to privilege while the world changed around them.
+Congratulations, Mr. Bezos. You built the logistics backbone of the global economy. You keep your $150 billion. Now hand Amazon over to the people who use it.
 
-The game is over. A new game begins. Will you play?
+Congratulations, Mr. Zuckerberg. You built the town square of the digital age. You keep your fortune. Now the square belongs to everyone who gathers there.
+
+**This is not punishment. This is what happens when Monopoly ends.** The winner takes pride in victory. Then the pieces go back in the box.
+
+You have a choice. Fight the Reset—cling to the old game while the world changes around you. The French aristocracy tried that in 1789. It did not end well for them.
+
+Or join us. Help design the transition. Protect your personal wealth through an orderly process rather than risk it all in chaos.
+
+The game is over. A new game begins. Will you help write the rules?
 
 ---
 
