@@ -1,0 +1,38 @@
+{
+  "name": "@democracy-earth/volunteerproof",
+  "version": "1.0.0",
+  "description": "VolunteerProof - World miniapp for tracking and verifying volunteer hours",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:worldchain-sepolia": "hardhat run scripts/deploy.js --network worldchain-sepolia",
+    "deploy:worldchain": "hardhat run scripts/deploy.js --network worldchain",
+    "dev": "cd frontend && npx serve",
+    "build": "hardhat compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/democracy-earth/volunteerproof.git"
+  },
+  "keywords": [
+    "volunteer",
+    "proof",
+    "world-id",
+    "miniapp",
+    "time-protocol",
+    "democracy-earth"
+  ],
+  "author": "Democracy Earth Foundation",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/democracy-earth/volunteerproof/issues"
+  },
+  "homepage": "https://democracy.earth",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@openzeppelin/contracts": "^5.0.0",
+    "dotenv": "^16.3.1",
+    "hardhat": "^2.19.0"
+  }
+}
