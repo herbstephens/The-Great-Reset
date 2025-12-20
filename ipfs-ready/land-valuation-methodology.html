@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Land Valuation Methodology</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Land Valuation Methodology</h1>
+</header>
+<h1 id="land-commons-protocol">LAND COMMONS PROTOCOL</h1>
+<h2 id="valuation-methodology-the-hybrid-approach">Valuation
+Methodology: The Hybrid Approach</h2>
+<p><em>Replacement Section for Great Reset Documentation</em></p>
+<hr />
+<h2 id="part-i-valuation-philosophy">Part I: Valuation Philosophy</h2>
+<p>The Land Commons Protocol requires a valuation methodology that is
+<strong>automated, transparent, globally consistent, and resistant to
+gaming</strong>. Unlike systems that rely on self-assessment or market
+manipulation, this approach grounds land value in objective, observable
+reality.</p>
+<p>The hybrid methodology combines three complementary systems:</p>
+<ol type="1">
+<li><strong>Satellite + Algorithmic Assessment</strong> — provides the
+global baseline through observable, automated data</li>
+<li><strong>Zonal Overlays</strong> — capture location premiums that
+remote sensing cannot detect</li>
+<li><strong>Use Category Multipliers</strong> — adjust fees based on
+social value of land use</li>
+</ol>
+<p><em>The result: no self-assessment, no displacement pressure, no
+gaming. Just an automated, transparent, globally consistent fee for
+using the Commons.</em></p>
+<hr />
+<h2 id="part-ii-satellite-algorithmic-assessment">Part II: Satellite +
+Algorithmic Assessment</h2>
+<p>The foundation of the valuation system is fully automated assessment
+using remote sensing and machine learning, eliminating human discretion
+and corruption opportunities.</p>
+<h3 id="data-sources">Data Sources</h3>
+<ol type="1">
+<li><p><strong>Satellite Imagery</strong> High-resolution optical
+imagery from commercial providers (Planet Labs, Maxar) and open-source
+programs (ESA Sentinel, NASA Landsat) provides global coverage updated
+weekly to monthly. Imagery classification identifies land cover type,
+development intensity, agricultural use, and natural features.</p></li>
+<li><p><strong>Topographic and Geographic Data</strong> Digital
+elevation models, slope analysis, flood risk mapping, coastal proximity,
+and climate zone data contribute to understanding inherent land
+characteristics that affect value independently of human
+development.</p></li>
+<li><p><strong>Infrastructure Proximity Analysis</strong> Algorithmic
+distance calculations to roads, utilities, transit stations, ports,
+airports, hospitals, schools, and commercial centers. These
+accessibility metrics are primary drivers of land value
+globally.</p></li>
+<li><p><strong>Agricultural and Ecological Indices</strong> Soil quality
+databases, growing season length, water availability, biodiversity
+indices, and carbon sequestration potential inform valuations for rural
+and conservation lands.</p></li>
+<li><p><strong>Market Transaction Data</strong> Where available,
+anonymized transaction data from land registries provides calibration
+for algorithmic models. The system learns from actual sales to improve
+accuracy while never depending on any single transaction.</p></li>
+</ol>
+<h3 id="machine-learning-valuation-model">Machine Learning Valuation
+Model</h3>
+<p>A global ML model trained on diverse geographic regions produces base
+land values:</p>
+<ul>
+<li>Feature extraction from satellite imagery using computer vision</li>
+<li>Integration of structured geospatial data layers</li>
+<li>Ensemble of regional models to handle geographic variation</li>
+<li>Continuous learning from new transaction data</li>
+<li>Quarterly model updates with transparent versioning</li>
+</ul>
+<p>All model weights, training data sources, and validation metrics are
+published openly. Any party can audit the methodology and reproduce
+results.</p>
+<hr />
+<h2 id="part-iii-zonal-overlays">Part III: Zonal Overlays</h2>
+<p>Satellite data captures physical characteristics but cannot see all
+value determinants. A parcel 50 meters from a subway station may appear
+identical from space to one 500 meters away, yet differ dramatically in
+value. Zonal overlays address this limitation.</p>
+<h3 id="zone-categories">Zone Categories</h3>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 33%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Zone Type</th>
+<th>Multiplier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Urban Core</strong></td>
+<td>3.0x - 5.0x</td>
+<td>Central business districts, major transit hubs, areas of highest
+density and economic activity</td>
+</tr>
+<tr class="even">
+<td><strong>Urban General</strong></td>
+<td>2.0x - 3.0x</td>
+<td>Established urban neighborhoods, secondary commercial areas,
+well-connected residential zones</td>
+</tr>
+<tr class="odd">
+<td><strong>Suburban</strong></td>
+<td>1.2x - 2.0x</td>
+<td>Lower density residential areas, edge city developments, areas with
+car-dependent infrastructure</td>
+</tr>
+<tr class="even">
+<td><strong>Rural Productive</strong></td>
+<td>0.8x - 1.2x</td>
+<td>Agricultural land in active production, managed forests, aquaculture
+zones</td>
+</tr>
+<tr class="odd">
+<td><strong>Remote/Wilderness</strong></td>
+<td>0.3x - 0.8x</td>
+<td>Areas distant from infrastructure, low population density, limited
+development potential</td>
+</tr>
+<tr class="even">
+<td><strong>Conservation</strong></td>
+<td>0.0x (credit)</td>
+<td>Protected areas, rewilding zones, carbon sinks; may receive payments
+rather than owe fees</td>
+</tr>
+</tbody>
+</table>
+<h3 id="zone-boundary-governance">Zone Boundary Governance</h3>
+<p>Zone boundaries are not set by market forces but through democratic
+governance:</p>
+<ul>
+<li><strong>Initial Mapping:</strong> Professional geographic analysis
+using population density, infrastructure networks, and economic activity
+data establishes baseline zones</li>
+<li><strong>Review Cycle:</strong> Zone boundaries reviewed every 5
+years through regional Land Commons Committees with public input
+periods</li>
+<li><strong>Change Triggers:</strong> Major infrastructure investments
+(new transit lines, ports) trigger automatic zone review for affected
+areas</li>
+<li><strong>Transparency:</strong> All zone maps, boundary
+justifications, and review proceedings published on-chain</li>
+</ul>
+<p>This approach captures location value that satellite data misses
+while preventing the displacement pressures inherent in self-assessment
+systems.</p>
+<hr />
+<h2 id="part-iv-use-category-multipliers">Part IV: Use Category
+Multipliers</h2>
+<p>Not all land uses are equal from a Commons perspective. The fee
+structure recognizes that some uses generate positive externalities
+while others extract disproportionate value from shared resources.</p>
+<h3 id="use-category-fee-rates">Use Category Fee Rates</h3>
+<table>
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 19%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Use Category</th>
+<th>Rate</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A: Primary Residential</strong></td>
+<td>0.5%</td>
+<td>Everyone needs somewhere to live; lowest rate respects this
+necessity</td>
+</tr>
+<tr class="even">
+<td><strong>B: Agricultural</strong></td>
+<td>0.6%</td>
+<td>Food security is a global good; supports rural livelihoods while
+preventing hoarding</td>
+</tr>
+<tr class="odd">
+<td><strong>C: Secondary Residential</strong></td>
+<td>0.8%</td>
+<td>Vacation homes, second properties; not essential, moderate rate</td>
+</tr>
+<tr class="even">
+<td><strong>D: Commercial/Industrial</strong></td>
+<td>1.0%</td>
+<td>Business use at standard rates; productive use of Commons</td>
+</tr>
+<tr class="odd">
+<td><strong>E: Speculative/Vacant</strong></td>
+<td>2.0%</td>
+<td>Holding land without productive use; “use it or release it”
+incentive</td>
+</tr>
+<tr class="even">
+<td><strong>F: Conservation/Rewilding</strong></td>
+<td>0% or negative</td>
+<td>Zero fee or payment for ecosystem services; incentivizes leaving
+land wild</td>
+</tr>
+</tbody>
+</table>
+<h3 id="use-classification-methodology">Use Classification
+Methodology</h3>
+<p>Land use is determined through a combination of automated detection
+and self-declaration with verification:</p>
+<ul>
+<li><strong>Satellite Detection:</strong> Computer vision identifies
+structures, agricultural activity, and land cover changes</li>
+<li><strong>Registry Integration:</strong> National and local land
+registries provide official use classifications where available</li>
+<li><strong>Holder Declaration:</strong> Land holders may declare
+intended use, subject to verification</li>
+<li><strong>Audit and Penalty:</strong> Misclassification detected
+through monitoring triggers back-fees plus penalty multiplier</li>
+</ul>
+<hr />
+<h2 id="part-v-the-complete-valuation-formula">Part V: The Complete
+Valuation Formula</h2>
+<p>The three components combine into a single, transparent
+calculation:</p>
+<pre><code>Commons Fee = Base Land Value × Zone Multiplier × Use Category Rate</code></pre>
+<h3 id="calculation-example">Calculation Example</h3>
+<p>Consider a 0.1 hectare parcel used as a primary residence in an urban
+general zone:</p>
+<ul>
+<li><strong>Base Land Value</strong> (from satellite + algorithmic):
+$150,000</li>
+<li><strong>Zone Multiplier</strong> (Urban General): 2.5x</li>
+<li><strong>Use Category Rate</strong> (Primary Residential): 0.5%</li>
+</ul>
+<pre><code>Fee = $150,000 × 2.5 × 0.5% = $1,875 / year</code></pre>
+<p>Compare to speculative vacant land in the same zone:</p>
+<pre><code>Fee = $150,000 × 2.5 × 2.0% = $7,500 / year</code></pre>
+<p>The differential creates strong incentives to either develop
+productively or release land for others to use.</p>
+<h3 id="global-distribution-mathematics">Global Distribution
+Mathematics</h3>
+<p>Conservative estimates suggest global land value of $200-300
+trillion. Applying the hybrid methodology with average effective rates
+around 0.8% yields:</p>
+<ul>
+<li>Total Commons Fee collection: $1.6 - 2.4 trillion annually</li>
+<li>Divided among 8 billion humans: <strong>$200 - 300 per person per
+year</strong></li>
+<li>This forms the foundation upon which national and local UBI programs
+can build</li>
+</ul>
+<p><em>The earth literally pays humanity a dividend for
+existing.</em></p>
+<hr />
+<h2 id="part-vi-appeals-and-governance">Part VI: Appeals and
+Governance</h2>
+<p>While the system is automated and transparent, legitimate disputes
+will arise. The governance structure ensures fairness without
+introducing corruption vectors.</p>
+<h3 id="appeal-grounds">Appeal Grounds</h3>
+<p>Land holders may appeal valuations on the following grounds:</p>
+<ul>
+<li><strong>Data Error:</strong> Satellite imagery or geographic data is
+demonstrably incorrect</li>
+<li><strong>Zone Misclassification:</strong> Parcel placed in wrong zone
+due to boundary error</li>
+<li><strong>Use Category Dispute:</strong> Actual use differs from
+system classification</li>
+<li><strong>Hardship Exemption:</strong> Extraordinary circumstances
+warrant temporary reduction</li>
+</ul>
+<h3 id="appeal-process">Appeal Process</h3>
+<ol type="1">
+<li><strong>Automated Review:</strong> System re-evaluates using most
+recent data; resolves obvious errors</li>
+<li><strong>Regional Committee:</strong> Human review by elected Land
+Commons Committee members</li>
+<li><strong>Global Arbitration:</strong> Final appeal to global Land
+Commons DAO with binding decision</li>
+<li><strong>All proceedings on-chain:</strong> Transparent, auditable,
+precedent-forming</li>
+</ol>
+<h3 id="governance-structure">Governance Structure</h3>
+<p>The Land Commons Protocol operates through a DAO structure:</p>
+<ul>
+<li><strong>Population-Weighted Representation:</strong> Voting power
+proportional to population, not wealth or GDP</li>
+<li><strong>Regional Committees:</strong> Local knowledge integrated
+through elected representatives</li>
+<li><strong>Supermajority Requirements:</strong> Major methodology
+changes require 2/3 or 3/4 approval</li>
+<li><strong>Protocol is the Institution:</strong> Governance embedded in
+code, not dependent on any nation-state</li>
+</ul>
+<hr />
+<h2 id="part-vii-advantages-of-the-hybrid-approach">Part VII: Advantages
+of the Hybrid Approach</h2>
+<h3 id="over-self-assessment-harberger-systems">Over Self-Assessment
+(Harberger) Systems</h3>
+<ul>
+<li><strong>No Displacement Pressure:</strong> Wealthy actors cannot
+force purchases from less wealthy holders</li>
+<li><strong>No Gaming Incentives:</strong> No benefit to under- or
+over-declaring values</li>
+<li><strong>Predictability:</strong> Land holders can budget knowing
+fees will not spike unexpectedly</li>
+<li><strong>Simplicity:</strong> No constant vigilance required from
+land users</li>
+<li><strong>Philosophical Alignment:</strong> Treats land as place of
+belonging, not just investment commodity</li>
+</ul>
+<h3 id="over-traditional-property-tax-systems">Over Traditional Property
+Tax Systems</h3>
+<ul>
+<li><strong>Global Consistency:</strong> Same methodology everywhere; no
+jurisdictional arbitrage</li>
+<li><strong>Corruption Resistance:</strong> Automated assessment
+eliminates assessor discretion and bribery</li>
+<li><strong>Transparency:</strong> All data, models, and decisions
+publicly auditable</li>
+<li><strong>Real-Time Updates:</strong> Values adjust quarterly, not on
+decade-long reassessment cycles</li>
+<li><strong>Universal Distribution:</strong> Revenue flows to all humans
+equally, not captured by local governments</li>
+</ul>
+<h3 id="political-and-ideological-breadth">Political and Ideological
+Breadth</h3>
+<ul>
+<li><strong>For the Global South:</strong> Restitution—colonial powers
+extracted for centuries; now the Commons flows back equally</li>
+<li><strong>For Environmentalists:</strong> Conservation becomes
+economically rational; sprawl expensive</li>
+<li><strong>For Urbanists:</strong> Density rewarded, not punished</li>
+<li><strong>For Libertarians:</strong> Not a tax on production or
+labor—a fee for monopolizing what predates all of us</li>
+<li><strong>For Traditionalists:</strong> Older than capitalism—Biblical
+jubilee applied to land</li>
+</ul>
+<hr />
+<h2 id="part-viii-technical-integration-with-great-reset">Part VIII:
+Technical Integration with Great Reset</h2>
+<p>The valuation methodology integrates with existing Great Reset
+infrastructure:</p>
+<h3 id="smart-contract-architecture">Smart Contract Architecture</h3>
+<ul>
+<li><strong>Land Registry Migration:</strong> On-chain parcel records
+linked to national cadastral systems</li>
+<li><strong>Valuation Oracle:</strong> Decentralized oracle network
+providing satellite data and ML valuations</li>
+<li><strong>Fee Collection Contracts:</strong> Automatic quarterly
+deduction in TIME tokens or stable equivalent</li>
+<li><strong>Distribution Contracts:</strong> Integration with World ID
+for per-capita UBI distribution</li>
+<li><strong>ZK Extensions:</strong> Privacy-preserving proofs for land
+claims and fee payments</li>
+</ul>
+<h3 id="data-dependencies">Data Dependencies</h3>
+<ul>
+<li><strong>Satellite Providers:</strong> Planet Labs, Maxar
+(commercial); Sentinel, Landsat (open-source)</li>
+<li><strong>GIS Systems:</strong> OpenStreetMap, national mapping
+agencies</li>
+<li><strong>Transaction Data:</strong> Anonymized land registry feeds
+where available</li>
+<li><strong>Existing Great Reset Components:</strong> ZK circuits,
+launch coordination system, TIME Protocol tokens</li>
+</ul>
+<h3 id="implementation-timeline">Implementation Timeline</h3>
+<ol type="1">
+<li><strong>Years 1-2:</strong> Valuation model development, satellite
+data integration, registry partnerships</li>
+<li><strong>Years 3-4:</strong> Pilot programs in willing jurisdictions,
+model calibration</li>
+<li><strong>Year 5 (January 1, 2030):</strong> Global launch with
+grandfather provisions</li>
+<li><strong>Years 5-30:</strong> Gradual phase-out of transition
+discounts, full system maturity</li>
+</ol>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>The hybrid valuation methodology provides what the Land Commons
+Protocol requires: a system that is automated yet fair, global yet
+locally informed, rigorous yet simple to understand.</p>
+<p>By combining satellite-derived base values, democratically governed
+zone multipliers, and use-based rate adjustments, the system creates
+aligned incentives across all land holders and use cases.</p>
+<p>No self-assessment. No displacement risk. No corruption vectors. Just
+a transparent, algorithmic accounting of what each user owes the
+Commons—and what the Commons returns to humanity.</p>
+<blockquote>
+<p><em>“The earth belongs to no one and to everyone.”</em> — Thomas
+Paine, Agrarian Justice (1797)</p>
+</blockquote>
+<hr />
+<p><em>Version 2.0 — December 2025 — TIME Protocol Foundation</em></p>
+</body>
+</html>
