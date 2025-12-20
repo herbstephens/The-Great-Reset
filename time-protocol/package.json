@@ -1,0 +1,52 @@
+{
+  "name": "@democracy-earth/time-protocol",
+  "version": "1.0.0",
+  "description": "TIME Protocol - A Global Human Time Ledger",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:coverage": "hardhat coverage",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "deploy:worldchain-sepolia": "hardhat run scripts/deploy.js --network worldchain-sepolia",
+    "deploy:worldchain": "hardhat run scripts/deploy.js --network worldchain",
+    "deploy:base-sepolia": "hardhat run scripts/deploy.js --network base-sepolia",
+    "deploy:base": "hardhat run scripts/deploy.js --network base",
+    "verify": "hardhat verify",
+    "clean": "hardhat clean",
+    "lint": "solhint 'contracts/**/*.sol'",
+    "format": "prettier --write 'contracts/**/*.sol' 'test/**/*.js' 'scripts/**/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/democracy-earth/time-protocol.git"
+  },
+  "keywords": [
+    "ethereum",
+    "solidity",
+    "time",
+    "protocol",
+    "blockchain",
+    "world-id",
+    "democracy-earth"
+  ],
+  "author": "Democracy Earth Foundation",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/democracy-earth/time-protocol/issues"
+  },
+  "homepage": "https://democracy.earth",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "@openzeppelin/contracts": "^5.0.0",
+    "dotenv": "^16.3.1",
+    "hardhat": "^2.19.0",
+    "prettier": "^3.1.0",
+    "prettier-plugin-solidity": "^1.2.0",
+    "solhint": "^4.0.0"
+  },
+  "dependencies": {
+    "@layerzerolabs/lz-evm-oapp-v2": "^2.0.0"
+  }
+}
