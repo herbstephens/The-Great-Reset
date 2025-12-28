@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Great Reset — January 1, 2034</title>
+  <meta name="description" content="A coordinated global economic restructuring. Claim your home. Claim your work. Claim your TIME. January 1, 2034.">
+  <meta property="og:title" content="The Great Reset — January 1, 2034">
+  <meta property="og:description" content="A coordinated global economic restructuring. The game is over. We're shuffling the deck so everyone can play.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thegreatreset.earth">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #111113;
+      --bg-card: #18181b;
+      --text-primary: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: #f59e0b;
+      --accent-hover: #fbbf24;
+      --border: #27272a;
+      --gradient-start: #1e1b4b;
+      --gradient-end: #0a0a0b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background: radial-gradient(ellipse at top, var(--gradient-start) 0%, var(--bg-primary) 60%);
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .overline {
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Countdown */
+    .countdown-container {
+      margin-bottom: 3rem;
+    }
+
+    .countdown-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      min-width: 100px;
+    }
+
+    .countdown-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .countdown-unit {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.5rem;
+    }
+
+    /* CTA Buttons */
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg-primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px -10px rgba(245, 158, 11, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card);
+      border-color: var(--text-muted);
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--text-muted);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* What You Receive Section */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-dark {
+      background: var(--bg-secondary);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Claims Grid */
+    .claims-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .claim-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .claim-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .claim-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .claim-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .claim-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* Quote Section */
+    .quote-section {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, var(--bg-primary) 0%, var(--gradient-start) 50%, var(--bg-primary) 100%);
+    }
+
+    .quote {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-style: italic;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      line-height: 1.4;
+    }
+
+    .quote-source {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Not Their Reset Section */
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .comparison-card {
+      padding: 2rem;
+      border-radius: 16px;
+    }
+
+    .comparison-card.theirs {
+      background: linear-gradient(135deg, #1f1315 0%, #18181b 100%);
+      border: 1px solid #3f1f1f;
+    }
+
+    .comparison-card.ours {
+      background: linear-gradient(135deg, #1a2e1a 0%, #18181b 100%);
+      border: 1px solid #1f3f1f;
+    }
+
+    .comparison-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .comparison-card.theirs h3 { color: #f87171; }
+    .comparison-card.ours h3 { color: #4ade80; }
+
+    .comparison-list {
+      list-style: none;
+    }
+
+    .comparison-list li {
+      padding: 0.5rem 0;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .comparison-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .comparison-card.theirs .comparison-list li::before {
+      background: #f87171;
+    }
+
+    .comparison-card.ours .comparison-list li::before {
+      background: #4ade80;
+    }
+
+    /* Timeline Section */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2.5rem;
+      padding-bottom: 3rem;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+      border: 2px solid var(--accent);
+    }
+
+    .timeline-item.active::before {
+      background: var(--accent);
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+    }
+
+    .timeline-year {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      text-align: center;
+      padding: 8rem 2rem;
+      background: radial-gradient(ellipse at bottom, var(--gradient-start) 0%, var(--bg-primary) 70%);
+    }
+
+    .final-cta h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .final-cta p {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .final-date {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--accent);
+      margin-top: 3rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .footer-org {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .footer-org a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .footer-org a:hover {
+      color: var(--text-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .countdown-item {
+        min-width: 70px;
+        padding: 1rem;
+      }
+      
+      .countdown-number {
+        font-size: 1.75rem;
+      }
+
+      .cta-group {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+
+      .timeline::before {
+        left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="overline">A Coordinated Global Economic Restructuring</p>
+      <h1>The Great Reset</h1>
+      <p class="tagline">The game is over. We're shuffling the deck so everyone can play.</p>
+      
+      <div class="countdown-container">
+        <p class="countdown-label">Countdown to Reset</p>
+        <div class="countdown" id="countdown">
+          <div class="countdown-item">
+            <div class="countdown-number" id="years">--</div>
+            <div class="countdown-unit">Years</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="days">--</div>
+            <div class="countdown-unit">Days</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="hours">--</div>
+            <div class="countdown-unit">Hours</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="minutes">--</div>
+            <div class="countdown-unit">Minutes</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="seconds">--</div>
+            <div class="countdown-unit">Seconds</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-group">
+        <a href="#claim" class="btn btn-primary">
+          <span>Claim Your Stake</span>
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#learn" class="btn btn-secondary">Read the Book</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+    </div>
+  </section>
+
+  <!-- What You Receive -->
+  <section class="section" id="claim">
+    <div class="section-header">
+      <h2>What You Receive</h2>
+      <p>When you claim your stake, you unlock five pillars of economic freedom.</p>
+    </div>
+
+    <div class="claims-grid">
+      <div class="claim-card">
+        <div class="claim-icon">🏠</div>
+        <h3>HOME</h3>
+        <p>Your primary residence becomes yours. Mortgages cancel. Renters become owners. Occupancy creates ownership.</p>
+      </div>
+
+      <div class="claim-card">
+        <div class="claim-icon">🌍</div>
+        <h3>LOCAL</h3>
+        <p>Your stake in the Commons—shared land, resources, and public assets of your community. Voice. Share. Identity.</p>
+      </div>
+
+      <div class="claim-card">
+        <div class="claim-icon">⚒️</div>
+        <h3>WORK</h3>
+        <p>50% of every company transfers to workers. Your labor finally owns what it creates.</p>
+      </div>
+
+      <div class="claim-card">
+        <div class="claim-icon">⏱️</div>
+        <h3>TIME</h3>
+        <p>1 TIME token for every day you've existed. Universal Basic Income built into identity. Plus 1 TIME per day, forever.</p>
+      </div>
+
+      <div class="claim-card">
+        <div class="claim-icon">🤝</div>
+        <h3>TAX-FREE</h3>
+        <p>All human-to-human transactions are tax-free. Forever. No limits. No reporting. Humans transact freely.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="quote-section">
+    <blockquote class="quote">
+      "We have it in our power to begin the world over again."
+    </blockquote>
+    <p class="quote-source">— Thomas Paine, Common Sense (1776)</p>
+  </section>
+
+  <!-- Not Their Reset -->
+  <section class="section section-dark">
+    <div class="section-header">
+      <h2>Not Their Reset — Ours</h2>
+      <p>The billionaires in Davos have their version. This is ours.</p>
+    </div>
+
+    <div class="comparison">
+      <div class="comparison-card theirs">
+        <h3>✗ Their Reset</h3>
+        <ul class="comparison-list">
+          <li>Top-down</li>
+          <li>Designed by winners</li>
+          <li>Protects existing power</li>
+          <li>A proposal</li>
+          <li>Requires trust in institutions</li>
+          <li>Implemented by governments</li>
+        </ul>
+      </div>
+
+      <div class="comparison-card ours">
+        <h3>✓ Our Reset</h3>
+        <ul class="comparison-list">
+          <li>Bottom-up</li>
+          <li>Built by everyone</li>
+          <li>Distributes power</li>
+          <li>A protocol</li>
+          <li>Requires only participation</li>
+          <li>Executed by code</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="section" id="learn">
+    <div class="section-header">
+      <h2>The Timeline</h2>
+      <p>Eight years to transform the world.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item active">
+        <div class="timeline-year">2025-2027</div>
+        <div class="timeline-title">Infrastructure</div>
+        <div class="timeline-desc">Protocol development. World ID integration. Building the foundation.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2027</div>
+        <div class="timeline-title">Claims Open</div>
+        <div class="timeline-desc">Anyone with World ID can claim. The pioneers stake their positions.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2027-2033</div>
+        <div class="timeline-title">Parallel Growth</div>
+        <div class="timeline-desc">Shadow democracy builds legitimacy. TIME Protocol results diverge from official results.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">January 1, 2034</div>
+        <div class="timeline-title">THE GREAT RESET</div>
+        <div class="timeline-desc">All claims activate. Homes transfer. Worker equity issues. The new democracy begins.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2034+</div>
+        <div class="timeline-title">Transition</div>
+        <div class="timeline-desc">Governments adopt TIME Protocol. The shadow becomes the system.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <h2>The Choice Is Yours</h2>
+    <p>The game is ending. You can wait for the collapse, or you can help build what comes next.</p>
+    
+    <div class="cta-group">
+      <a href="#" class="btn btn-primary">
+        <span>Claim Your Stake</span>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://github.com/DemocracyEarth/TheGreatReset" class="btn btn-secondary">View the Code</a>
+    </div>
+
+    <p class="final-date">January 1, 2034</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="#">Read the Book</a>
+      <a href="#">Claim</a>
+      <a href="#">Nominate Advisors</a>
+      <a href="https://github.com/DemocracyEarth/TheGreatReset">GitHub</a>
+      <a href="https://twitter.com/democracy_earth">@democracy_earth</a>
+    </div>
+    <p class="footer-org">
+      <a href="https://democracy.earth">Democracy Earth Foundation</a> · 
+      <a href="https://timeprotocol.org">TIME Protocol</a>
+    </p>
+  </footer>
+
+  <script>
+    // Countdown to January 1, 2034 00:00:00 UTC
+    const resetDate = new Date('2034-01-01T00:00:00Z').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = resetDate - now;
+
+      if (distance < 0) {
+        document.getElementById('countdown').innerHTML = '<div class="countdown-item"><div class="countdown-number">THE RESET HAS BEGUN</div></div>';
+        return;
+      }
+
+      const years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365.25));
+      const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('years').textContent = years;
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+
+    // Update immediately and then every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
