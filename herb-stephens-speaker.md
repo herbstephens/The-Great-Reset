@@ -79,4 +79,4 @@ Co-founded with **Santi Siri** (Democracy Earth Foundation), TIME Protocol is cr
 
 **TIME Protocol Labs** • **Democracy Earth Foundation**
 
-*THE GREAT RESET • January 1, 2030*
+*THE GREAT RESET • January 1, 2034*
