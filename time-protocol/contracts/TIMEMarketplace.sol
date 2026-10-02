@@ -8,13 +8,16 @@ import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 interface IUniversalCalendar {
     function getCalendarId(address owner) external view returns (uint256);
-    function bookSlot(
+    function bookSlotFor(
         uint256 calendarId,
         uint256 date,
         uint256 slotIndex,
         uint256 rate,
-        bytes32 workCategory
+        bytes32 workCategory,
+        address buyer
     ) external;
+    function completeSlot(uint256 calendarId, uint256 date, uint256 slotIndex) external;
+    function cancelSlot(uint256 calendarId, uint256 date, uint256 slotIndex) external;
 }
 
 /**
@@ -66,6 +69,9 @@ contract TIMEMarketplace is AccessControl, ReentrancyGuard {
     uint256 private _listingIdCounter;
     uint256 private _bookingIdCounter;
     
+    /// @notice After the hour ends, a worker can claim payment if the buyer has neither released nor disputed.
+    uint256 public constant RELEASE_TIMEOUT = 7 days;
+
     // Fee configuration (basis points, 100 = 1%)
     uint256 public platformFeeBps = 250; // 2.5%
     address public feeRecipient;
@@ -100,6 +106,9 @@ contract TIMEMarketplace is AccessControl, ReentrancyGuard {
     error NotAuthorized();
     error InvalidAmount();
     error AlreadyHasListing();
+    error InvalidSlot();
+    error InvalidDate();
+    error TooEarly();
     
     // ============ Constructor ============
     
@@ -193,8 +202,12 @@ contract TIMEMarketplace is AccessControl, ReentrancyGuard {
         Listing storage listing = listings[listingId];
         if (listing.id == 0) revert ListingNotFound();
         if (!listing.active) revert ListingNotActive();
+        if (msg.sender == listing.worker) revert NotAuthorized();
+        if (slotIndex >= 24) revert InvalidSlot();
+        if ((date / 1 days) * 1 days < (block.timestamp / 1 days) * 1 days) revert InvalidDate();
         
         uint256 amount = listing.ratePerHour;
+        if (amount == 0) revert InvalidAmount();
         
         // Transfer payment to escrow
         paymentToken.safeTransferFrom(msg.sender, address(this), amount);
@@ -234,12 +247,13 @@ contract TIMEMarketplace is AccessControl, ReentrancyGuard {
         if (booking.status != BookingStatus.PENDING) revert InvalidStatus();
         
         // Book the slot on the calendar
-        calendar.bookSlot(
+        calendar.bookSlotFor(
             booking.calendarId,
             booking.date,
             booking.slotIndex,
             booking.amount,
-            booking.category
+            booking.category,
+            booking.buyer
         );
         
         booking.status = BookingStatus.CONFIRMED;
@@ -249,7 +263,8 @@ contract TIMEMarketplace is AccessControl, ReentrancyGuard {
     
     /**
      * @notice Complete the booking and release payment
-     * @dev Called by buyer to confirm work was done
+     * @dev Called by the buyer once the hour has ended. Completing the slot mints TIME
+     *      and a receipt to the worker, so TIME exists only for an hour that was paid.
      */
     function completeBooking(uint256 bookingId) external nonReentrant {
         Booking storage booking = bookings[bookingId];
@@ -257,21 +272,24 @@ contract TIMEMarketplace is AccessControl, ReentrancyGuard {
         if (booking.buyer != msg.sender) revert NotAuthorized();
         if (booking.status != BookingStatus.CONFIRMED) revert InvalidStatus();
         
-        booking.status = BookingStatus.COMPLETED;
-        
-        // Calculate fees
-        uint256 platformFee = (booking.amount * platformFeeBps) / 10000;
-        uint256 workerPayout = booking.amount - platformFee;
-        
-        // Transfer payments
-        paymentToken.safeTransfer(booking.worker, workerPayout);
-        if (platformFee > 0) {
-            paymentToken.safeTransfer(feeRecipient, platformFee);
-        }
-        
-        emit BookingCompleted(bookingId, workerPayout, platformFee);
+        _settle(booking, bookingId);
     }
-    
+
+    /**
+     * @notice Worker claims payment when the buyer has neither released nor disputed
+     * @dev Possible once RELEASE_TIMEOUT has passed after the hour ended, so a buyer
+     *      cannot withhold payment indefinitely.
+     */
+    function claimAfterTimeout(uint256 bookingId) external nonReentrant {
+        Booking storage booking = bookings[bookingId];
+        if (booking.id == 0) revert BookingNotFound();
+        if (booking.worker != msg.sender) revert NotAuthorized();
+        if (booking.status != BookingStatus.CONFIRMED) revert InvalidStatus();
+        if (block.timestamp < _hourEnd(booking) + RELEASE_TIMEOUT) revert TooEarly();
+        
+        _settle(booking, bookingId);
+    }
+
     /**
      * @notice Cancel a booking
      * @dev Buyer can cancel pending, worker can cancel pending/confirmed
@@ -293,9 +311,13 @@ contract TIMEMarketplace is AccessControl, ReentrancyGuard {
             revert InvalidStatus();
         }
         
+        bool slotHeld = booking.status == BookingStatus.CONFIRMED;
         booking.status = BookingStatus.CANCELLED;
         
-        // Refund buyer
+        // Reopen the hour if it was reserved, then refund the buyer
+        if (slotHeld) {
+            calendar.cancelSlot(booking.calendarId, booking.date, booking.slotIndex);
+        }
         paymentToken.safeTransfer(booking.buyer, booking.amount);
         
         emit BookingCancelled(bookingId, msg.sender);
@@ -368,17 +390,36 @@ contract TIMEMarketplace is AccessControl, ReentrancyGuard {
         Booking storage booking = bookings[bookingId];
         if (booking.status != BookingStatus.DISPUTED) revert InvalidStatus();
         
+        if (refundBuyer) {
+            booking.status = BookingStatus.CANCELLED;
+            calendar.cancelSlot(booking.calendarId, booking.date, booking.slotIndex);
+            paymentToken.safeTransfer(booking.buyer, booking.amount);
+            emit BookingCancelled(bookingId, msg.sender);
+        } else {
+            // Paying the worker completes the slot, which needs the hour to have ended.
+            _settle(booking, bookingId);
+        }
+    }
+
+    // ============ Internal ============
+
+    function _hourEnd(Booking storage booking) internal view returns (uint256) {
+        return (booking.date / 1 days) * 1 days + (booking.slotIndex + 1) * 1 hours;
+    }
+
+    /// @dev Completes the calendar slot (mints TIME and a receipt) and pays the worker.
+    function _settle(Booking storage booking, uint256 bookingId) internal {
         booking.status = BookingStatus.COMPLETED;
         
-        if (refundBuyer) {
-            paymentToken.safeTransfer(booking.buyer, booking.amount);
-        } else {
-            uint256 platformFee = (booking.amount * platformFeeBps) / 10000;
-            uint256 workerPayout = booking.amount - platformFee;
-            paymentToken.safeTransfer(booking.worker, workerPayout);
-            if (platformFee > 0) {
-                paymentToken.safeTransfer(feeRecipient, platformFee);
-            }
+        calendar.completeSlot(booking.calendarId, booking.date, booking.slotIndex);
+        
+        uint256 platformFee = (booking.amount * platformFeeBps) / 10000;
+        uint256 workerPayout = booking.amount - platformFee;
+        paymentToken.safeTransfer(booking.worker, workerPayout);
+        if (platformFee > 0) {
+            paymentToken.safeTransfer(feeRecipient, platformFee);
         }
+        
+        emit BookingCompleted(bookingId, workerPayout, platformFee);
     }
 }

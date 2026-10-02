@@ -104,29 +104,6 @@ contract TIMEToken is ERC20, ERC20Burnable, AccessControl, ReentrancyGuard {
         return amount;
     }
     
-    /**
-     * @notice Simplified mint for backward compatibility
-     * @param to Address to mint tokens to
-     * @param amount Amount of TIME to mint (in wei, 1e18 = 1 TIME = 1 hour)
-     */
-    function mint(address to, uint256 amount) external onlyRole(MINTER_ROLE) {
-        if (amount == 0) revert InvalidAmount();
-
-        uint256 numHours = amount / 1e18;
-
-        _mint(to, amount);
-
-        totalHoursMinted += numHours;
-        hoursWorked[to] += numHours;
-
-        emit TIMEMinted(
-            to,
-            amount,
-            numHours,
-            bytes32(0),
-            block.timestamp
-        );
-    }
     
     /**
      * @notice Burn TIME tokens with reason tracking

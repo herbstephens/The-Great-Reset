@@ -30,8 +30,9 @@ interface ITIMEToken {
 }
 
 interface IWorkReceipt {
-    function mint(
-        address to,
+    function mintWithEmployer(
+        address worker,
+        address employer,
         uint256 calendarId,
         uint256 slotIndex,
         uint256 date,
@@ -65,6 +66,7 @@ contract UniversalCalendar is ERC721, ERC721Enumerable, AccessControl, Reentranc
         bytes32 workCategory;
         uint256 bookedAt;
         uint256 completedAt;
+        address bookedVia;   // marketplace that holds the escrow; zero for a self-booked slot
     }
     
     struct Calendar {
@@ -77,6 +79,8 @@ contract UniversalCalendar is ERC721, ERC721Enumerable, AccessControl, Reentranc
     // ============ Constants ============
     
     uint256 public constant SLOTS_PER_DAY = 24;
+    /// @notice How far ahead an hour can be booked.
+    uint256 public constant MAX_BOOKING_HORIZON = 90 days;
     bytes32 public constant VERIFIER_ROLE = keccak256("VERIFIER_ROLE");
     
     // ============ State Variables ============
@@ -94,6 +98,8 @@ contract UniversalCalendar is ERC721, ERC721Enumerable, AccessControl, Reentranc
     mapping(uint256 => Calendar) public calendars;
     mapping(uint256 => bool) public nullifierHashUsed;
     mapping(uint256 => mapping(uint256 => mapping(uint256 => TimeSlot))) public slots;
+    /// @notice Marketplaces allowed to book on a buyer's behalf and to complete paid slots.
+    mapping(address => bool) public marketplaces;
     // slots[calendarId][date][slotIndex] => TimeSlot
     
     // ============ Events ============
@@ -126,6 +132,8 @@ contract UniversalCalendar is ERC721, ERC721Enumerable, AccessControl, Reentranc
         uint256 indexed date,
         uint256 slotIndex
     );
+
+    event MarketplaceSet(address indexed marketplace, bool allowed);
     
     // ============ Errors ============
     
@@ -139,6 +147,15 @@ contract UniversalCalendar is ERC721, ERC721Enumerable, AccessControl, Reentranc
     error InvalidDate();
     error NotAuthorized();
     error TransferNotAllowed();
+    error NotMarketplace();
+    error SelfBooking();
+    error HourNotEnded();
+    error DateTooFar();
+
+    modifier onlyMarketplace() {
+        if (!marketplaces[msg.sender]) revert NotMarketplace();
+        _;
+    }
     
     // ============ Constructor ============
     
@@ -201,12 +218,9 @@ contract UniversalCalendar is ERC721, ERC721Enumerable, AccessControl, Reentranc
     }
     
     /**
-     * @notice Book a time slot
-     * @param calendarId Calendar to book on
-     * @param date Unix timestamp representing the day (normalized to midnight UTC)
-     * @param slotIndex Hour index (0-23)
-     * @param rate Agreed payment rate for this slot
-     * @param workCategory Category of work to be performed
+     * @notice Block one of your own hours. Only the calendar owner can book directly.
+     * @dev A self-booked slot can never be completed, so it never mints TIME. The
+     *      owner can cancel it to reopen the hour.
      */
     function bookSlot(
         uint256 calendarId,
@@ -216,50 +230,56 @@ contract UniversalCalendar is ERC721, ERC721Enumerable, AccessControl, Reentranc
         bytes32 workCategory
     ) external nonReentrant {
         if (!_exists(calendarId)) revert CalendarNotFound();
-        if (slotIndex >= SLOTS_PER_DAY) revert InvalidSlotIndex();
-        
-        // Normalize date to midnight UTC
-        uint256 normalizedDate = (date / 1 days) * 1 days;
-        if (normalizedDate < block.timestamp - 1 days) revert InvalidDate();
-        
-        TimeSlot storage slot = slots[calendarId][normalizedDate][slotIndex];
-        if (slot.status != SlotStatus.AVAILABLE) revert SlotNotAvailable();
-        
-        slot.status = SlotStatus.BOOKED;
-        slot.bookedBy = msg.sender;
-        slot.agreedRate = rate;
-        slot.workCategory = workCategory;
-        slot.bookedAt = block.timestamp;
-        
-        emit SlotBooked(calendarId, normalizedDate, slotIndex, msg.sender, rate, workCategory);
+        if (ownerOf(calendarId) != msg.sender) revert NotCalendarOwner();
+        _book(calendarId, date, slotIndex, rate, workCategory, msg.sender, address(0));
     }
-    
+
     /**
-     * @notice Mark a slot as completed and mint TIME + WorkReceipt
-     * @param calendarId Calendar ID
-     * @param date Date of the slot
-     * @param slotIndex Hour index (0-23)
+     * @notice Book an hour for a paying buyer. Only a registered marketplace can call this.
+     * @param buyer The paying counterparty. It cannot be the calendar owner.
+     */
+    function bookSlotFor(
+        uint256 calendarId,
+        uint256 date,
+        uint256 slotIndex,
+        uint256 rate,
+        bytes32 workCategory,
+        address buyer
+    ) external nonReentrant onlyMarketplace {
+        if (!_exists(calendarId)) revert CalendarNotFound();
+        if (buyer == address(0) || buyer == ownerOf(calendarId)) revert SelfBooking();
+        _book(calendarId, date, slotIndex, rate, workCategory, buyer, msg.sender);
+    }
+
+    /**
+     * @notice Complete a paid hour and mint TIME and a receipt to the calendar owner.
+     * @dev Only the marketplace that holds the escrow can call this, and only once
+     *      the hour has ended. The owner cannot complete their own hours, so TIME is
+     *      never minted without a counterparty whose payment is being released.
      */
     function completeSlot(
         uint256 calendarId,
         uint256 date,
         uint256 slotIndex
-    ) external nonReentrant {
+    ) external nonReentrant onlyMarketplace {
         if (!_exists(calendarId)) revert CalendarNotFound();
-        if (ownerOf(calendarId) != msg.sender) revert NotCalendarOwner();
         if (slotIndex >= SLOTS_PER_DAY) revert InvalidSlotIndex();
-        
+
         uint256 normalizedDate = (date / 1 days) * 1 days;
         TimeSlot storage slot = slots[calendarId][normalizedDate][slotIndex];
-        
+
         if (slot.status != SlotStatus.BOOKED) revert SlotNotBooked();
-        
+        if (slot.bookedVia != msg.sender) revert NotAuthorized();
+
+        address worker = ownerOf(calendarId);
+        if (slot.bookedBy == worker) revert SelfBooking();
+        if (block.timestamp < normalizedDate + (slotIndex + 1) * 1 hours) revert HourNotEnded();
+
         slot.status = SlotStatus.COMPLETED;
         slot.completedAt = block.timestamp;
-        
+
         calendars[calendarId].totalHoursWorked++;
-        
-        // Mint TIME token
+
         ITIMEToken.MintMetadata memory metadata = ITIMEToken.MintMetadata({
             mintTimestamp: block.timestamp,
             workerNullifierHash: calendars[calendarId].nullifierHash,
@@ -267,13 +287,13 @@ contract UniversalCalendar is ERC721, ERC721Enumerable, AccessControl, Reentranc
             workCategory: slot.workCategory,
             originalRate: slot.agreedRate
         });
-        
-        uint256 timeMinted = timeToken.mint(msg.sender, 1, metadata);
-        
-        // Mint WorkReceipt NFT
+
+        uint256 timeMinted = timeToken.mint(worker, 1, metadata);
+
         if (address(workReceipt) != address(0)) {
-            workReceipt.mint(
-                msg.sender,
+            workReceipt.mintWithEmployer(
+                worker,
+                slot.bookedBy,
                 calendarId,
                 slotIndex,
                 normalizedDate,
@@ -281,15 +301,15 @@ contract UniversalCalendar is ERC721, ERC721Enumerable, AccessControl, Reentranc
                 slot.agreedRate
             );
         }
-        
+
         emit SlotCompleted(calendarId, normalizedDate, slotIndex, timeMinted);
     }
-    
+
     /**
-     * @notice Cancel a booked slot
-     * @param calendarId Calendar ID
-     * @param date Date of the slot
-     * @param slotIndex Hour index (0-23)
+     * @notice Cancel a booked slot and reopen the hour.
+     * @dev A slot held in a marketplace escrow can be cancelled only by that
+     *      marketplace, so a refund and the reopening always happen together. A
+     *      self-booked slot can be cancelled only by the calendar owner.
      */
     function cancelSlot(
         uint256 calendarId,
@@ -298,22 +318,53 @@ contract UniversalCalendar is ERC721, ERC721Enumerable, AccessControl, Reentranc
     ) external nonReentrant {
         if (!_exists(calendarId)) revert CalendarNotFound();
         if (slotIndex >= SLOTS_PER_DAY) revert InvalidSlotIndex();
-        
+
         uint256 normalizedDate = (date / 1 days) * 1 days;
         TimeSlot storage slot = slots[calendarId][normalizedDate][slotIndex];
-        
-        // Only owner or booker can cancel
-        bool isOwner = ownerOf(calendarId) == msg.sender;
-        bool isBooker = slot.bookedBy == msg.sender;
-        if (!isOwner && !isBooker) revert NotAuthorized();
-        
+
         if (slot.status != SlotStatus.BOOKED) revert SlotNotBooked();
-        
-        slot.status = SlotStatus.CANCELLED;
-        
+
+        if (slot.bookedVia != address(0)) {
+            if (msg.sender != slot.bookedVia) revert NotAuthorized();
+        } else if (msg.sender != ownerOf(calendarId)) {
+            revert NotAuthorized();
+        }
+
+        delete slots[calendarId][normalizedDate][slotIndex];
+
         emit SlotCancelled(calendarId, normalizedDate, slotIndex);
     }
-    
+
+    function _book(
+        uint256 calendarId,
+        uint256 date,
+        uint256 slotIndex,
+        uint256 rate,
+        bytes32 workCategory,
+        address bookedBy,
+        address via
+    ) internal {
+        if (slotIndex >= SLOTS_PER_DAY) revert InvalidSlotIndex();
+
+        uint256 normalizedDate = (date / 1 days) * 1 days;
+        uint256 today = (block.timestamp / 1 days) * 1 days;
+        if (normalizedDate < today) revert InvalidDate();
+        if (normalizedDate > today + MAX_BOOKING_HORIZON) revert DateTooFar();
+
+        TimeSlot storage slot = slots[calendarId][normalizedDate][slotIndex];
+        if (slot.status != SlotStatus.AVAILABLE) revert SlotNotAvailable();
+
+        slot.status = SlotStatus.BOOKED;
+        slot.bookedBy = bookedBy;
+        slot.bookedVia = via;
+        slot.agreedRate = rate;
+        slot.workCategory = workCategory;
+        slot.bookedAt = block.timestamp;
+        slot.completedAt = 0;
+
+        emit SlotBooked(calendarId, normalizedDate, slotIndex, bookedBy, rate, workCategory);
+    }
+
     // ============ View Functions ============
     
     /**
@@ -372,6 +423,11 @@ contract UniversalCalendar is ERC721, ERC721Enumerable, AccessControl, Reentranc
     
     function setWorkReceipt(address _workReceipt) external onlyRole(DEFAULT_ADMIN_ROLE) {
         workReceipt = IWorkReceipt(_workReceipt);
+    }
+
+    function setMarketplace(address marketplace, bool allowed) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        marketplaces[marketplace] = allowed;
+        emit MarketplaceSet(marketplace, allowed);
     }
     
     // ============ Soulbound Overrides ============
