@@ -46,7 +46,7 @@ contract TIMEToken is ERC20, ERC20Burnable, AccessControl, ReentrancyGuard {
     event TIMEMinted(
         address indexed worker,
         uint256 amount,
-        uint256 hours,
+        uint256 numHours,
         bytes32 indexed workCategory,
         uint256 timestamp
     );
@@ -76,57 +76,34 @@ contract TIMEToken is ERC20, ERC20Burnable, AccessControl, ReentrancyGuard {
      * @notice Mint TIME tokens upon verified work completion
      * @dev Only callable by authorized minters (UniversalCalendar, authorized apps)
      * @param to Address to mint tokens to (the worker)
-     * @param hours Number of hours worked (mints hours * 1e18 tokens)
+     * @param numHours Number of hours worked (mints numHours * 1e18 tokens)
      * @param metadata Additional metadata about the work
      */
     function mint(
         address to,
-        uint256 hours,
+        uint256 numHours,
         MintMetadata calldata metadata
     ) external onlyRole(MINTER_ROLE) nonReentrant returns (uint256) {
-        if (hours == 0 || hours > 24) revert InvalidHours();
-        
-        uint256 amount = hours * 1e18;
-        
+        if (numHours == 0 || numHours > 24) revert InvalidHours();
+
+        uint256 amount = numHours * 1e18;
+
         _mint(to, amount);
-        
-        totalHoursMinted += hours;
-        hoursWorked[to] += hours;
-        
+
+        totalHoursMinted += numHours;
+        hoursWorked[to] += numHours;
+
         emit TIMEMinted(
             to,
             amount,
-            hours,
+            numHours,
             metadata.workCategory,
             block.timestamp
         );
-        
+
         return amount;
     }
     
-    /**
-     * @notice Simplified mint for backward compatibility
-     * @param to Address to mint tokens to
-     * @param amount Amount of TIME to mint (in wei, 1e18 = 1 TIME = 1 hour)
-     */
-    function mint(address to, uint256 amount) external onlyRole(MINTER_ROLE) {
-        if (amount == 0) revert InvalidAmount();
-        
-        uint256 hours = amount / 1e18;
-        
-        _mint(to, amount);
-        
-        totalHoursMinted += hours;
-        hoursWorked[to] += hours;
-        
-        emit TIMEMinted(
-            to,
-            amount,
-            hours,
-            bytes32(0),
-            block.timestamp
-        );
-    }
     
     /**
      * @notice Burn TIME tokens with reason tracking
@@ -151,11 +128,11 @@ contract TIMEToken is ERC20, ERC20Burnable, AccessControl, ReentrancyGuard {
     
     /**
      * @notice Get the TIME amount for given hours
-     * @param hours Number of hours
+     * @param numHours Number of hours
      * @return amount TIME amount in wei
      */
-    function fromHours(uint256 hours) external pure returns (uint256) {
-        return hours * 1e18;
+    function fromHours(uint256 numHours) external pure returns (uint256) {
+        return numHours * 1e18;
     }
     
     /**

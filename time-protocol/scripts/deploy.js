@@ -1,4 +1,5 @@
 const hre = require("hardhat");
+const { wireProtocol } = require("./wire");
 
 async function main() {
   const [deployer] = await hre.ethers.getSigners();
@@ -59,6 +60,13 @@ async function main() {
     },
   };
 
+  // Administration goes to a multisig of hardware keys on any real network.
+  const admin = process.env.ADMIN_ADDRESS || null;
+  const isLocal = ["hardhat", "localhost"].includes(hre.network.name);
+  if (!admin && !isLocal) {
+    throw new Error("Set ADMIN_ADDRESS (a multisig) before deploying to " + hre.network.name);
+  }
+
   const networkConfig = config[hre.network.name];
   if (!networkConfig) {
     throw new Error(`No configuration found for network: ${hre.network.name}`);
@@ -110,7 +118,7 @@ async function main() {
   const marketplace = await TIMEMarketplace.deploy(
     calendarAddress,
     networkConfig.dividendToken, // Using same token for payments
-    deployer.address // Fee recipient
+    admin || deployer.address // Fee recipient
   );
   await marketplace.waitForDeployment();
   const marketplaceAddress = await marketplace.getAddress();
@@ -119,22 +127,19 @@ async function main() {
   // 6. Configure contracts
   console.log("\n6. Configuring contracts...");
   
-  // Set TIMEToken address in Calendar
-  await calendar.setTIMEToken(timeTokenAddress);
-  console.log("   Set TIMEToken in UniversalCalendar");
-  
-  // Set WorkReceipt address in Calendar
-  await calendar.setWorkReceipt(workReceiptAddress);
-  console.log("   Set WorkReceipt in UniversalCalendar");
-  
-  // Grant MINTER_ROLE to Calendar in TIMEToken
-  const MINTER_ROLE = await timeToken.MINTER_ROLE();
-  await timeToken.grantRole(MINTER_ROLE, calendarAddress);
-  console.log("   Granted MINTER_ROLE to UniversalCalendar in TIMEToken");
-  
-  // Grant MINTER_ROLE to Calendar in WorkReceipt
-  await workReceipt.grantRole(MINTER_ROLE, calendarAddress);
-  console.log("   Granted MINTER_ROLE to UniversalCalendar in WorkReceipt");
+  await wireProtocol({
+    deployer,
+    admin,
+    timeToken,
+    workReceipt,
+    calendar,
+    marketplace,
+    distributor,
+  });
+  console.log("   Wired contracts: marketplace registered, deployer minter role renounced");
+  if (admin) {
+    console.log("   Administration handed to:", admin);
+  }
 
   // Summary
   console.log("\n" + "=".repeat(60));

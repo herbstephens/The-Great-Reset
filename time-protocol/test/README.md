@@ -1,16 +1,15 @@
 # Tests
 
-- `baseline.test.js`: do the contracts do what the README says on the happy path?
-- `audit-observations.test.js`: one characterization test per observation from the
-  contract review (`GroundState: docs/product-alpha/time-protocol-and-hito.md`). They
-  assert what the code does **today**, so they pass; the titles say which behaviours are
-  problems. The skipped block at the bottom lists the behaviour we want instead. When a
-  fix ships, enable the matching pending test and flip or delete the characterization one.
-- `contracts/mocks/` holds test-only mocks (World ID router, payment token). Do not deploy them.
-
-Only the tests whose title is about the exploit (OBS-1, OBS-2, OBS-3) use a stranger
-booking someone else's slot; every other test books through the calendar owner so it
-keeps working after `bookSlot` is restricted.
+- `baseline.test.js`: the happy path. Calendars are soulbound, an owner can block and reopen
+  their own hours, and a paid hour mints one TIME and one receipt only after it has ended and
+  the buyer releases payment.
+- `audit-findings.test.js`: regression tests for each finding from the contract review (open
+  `bookSlot`, self-minting, burning an hour, the receipt's employer, escrow release, and the
+  deployer's mint and admin roles). Two tests are labelled **NOT FIXED** and document what
+  these changes do not close: public slot data, and wash trading by a colluding pair.
+- `fixtures.js`: shared setup. It wires contracts with `scripts/wire.js`, the same code
+  `scripts/deploy.js` uses, so the tests exercise the deployment wiring.
+- `contracts/mocks/`: test-only mocks (World ID router, payment token). Do not deploy them.
 
 ## Running
 
@@ -19,6 +18,5 @@ npx hardhat test
 ```
 
 On an Apple Silicon Mac without Rosetta, Hardhat's downloaded Intel `solc` cannot run
-(`HH505` / "bad CPU type"). Either install Rosetta (`softwareupdate --install-rosetta`)
-or compile with the JavaScript build of solc; a wrapper config that does that is a few
-lines (see how `hardhat.config.js` could override `TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD`).
+(`HH505` / "bad CPU type"). Install Rosetta (`softwareupdate --install-rosetta`) or compile
+with the JavaScript build of solc by overriding `TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD`.

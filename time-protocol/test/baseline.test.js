@@ -1,8 +1,7 @@
-// Baseline: do the contracts do what the README says they do on the happy path?
-// If these fail, the observation tests in audit-observations.test.js mean nothing.
+// Baseline: does the protocol do what the README says on the happy path?
 const { expect } = require("chai");
 const { loadFixture } = require("@nomicfoundation/hardhat-toolbox/network-helpers");
-const { CATEGORY, PROOF, Status, DAY, dayStart, deployProtocol, withCalendars, middayTomorrow } = require("./fixtures");
+const { CATEGORY, PROOF, Status, DAY, ONE, RATE, dayStart, deployProtocol, withCalendars, middayTomorrow, paidBooking, passHour } = require("./fixtures");
 
 describe("Baseline behaviour", () => {
   it("creates a soulbound calendar per verified human and rejects a repeated nullifier", async () => {
@@ -32,22 +31,31 @@ describe("Baseline behaviour", () => {
       .to.be.revertedWithCustomError(calendar, "InvalidSlotIndex");
   });
 
-  it("mints one TIME and one receipt when the owner completes a booked slot", async () => {
-    const { calendar, token, receipt, alice, aliceCal } = await loadFixture(withCalendars);
-    const t = await middayTomorrow();
-    const date = dayStart(t) + DAY;
-    await calendar.connect(alice).bookSlot(aliceCal, date, 9, 50n, CATEGORY);
-    await calendar.connect(alice).completeSlot(aliceCal, date, 9);
-    expect(await token.balanceOf(alice.address)).to.equal(10n ** 18n);
-    expect(await receipt.balanceOf(alice.address)).to.equal(1n);
-    expect((await calendar.getSlot(aliceCal, date, 9)).status).to.equal(Status.COMPLETED);
+  it("lets the owner block one of their own hours and reopen it", async () => {
+    const { calendar, alice, aliceCal } = await loadFixture(withCalendars);
+    const date = dayStart(await middayTomorrow()) + DAY;
+    await calendar.connect(alice).bookSlot(aliceCal, date, 9, 0, CATEGORY);
+    expect((await calendar.getSlot(aliceCal, date, 9)).status).to.equal(Status.BOOKED);
+    await calendar.connect(alice).cancelSlot(aliceCal, date, 9);
+    expect((await calendar.getSlot(aliceCal, date, 9)).status).to.equal(Status.AVAILABLE);
   });
 
-  it("only the calendar owner can complete a slot", async () => {
-    const { calendar, alice, mallory, aliceCal } = await loadFixture(withCalendars);
-    const t = await middayTomorrow();
-    const date = dayStart(t) + DAY;
+  it("mints one TIME and one receipt, and pays the worker, once a booked hour has ended and the buyer releases payment", async () => {
+    const p = await loadFixture(withCalendars);
+    const { token, receipt, pay, market, alice, bob, feeRecipient } = p;
+    const { date, slot, bookingId } = await paidBooking(p);
+    await passHour(date, slot);
+    await market.connect(bob).completeBooking(bookingId);
+    expect(await token.balanceOf(alice.address)).to.equal(ONE);
+    expect(await receipt.balanceOf(alice.address)).to.equal(1n);
+    expect(await pay.balanceOf(alice.address)).to.equal(RATE * 975n / 1000n);
+    expect(await pay.balanceOf(feeRecipient.address)).to.equal(RATE * 25n / 1000n);
+  });
+
+  it("only a registered marketplace can complete a slot", async () => {
+    const { calendar, alice, aliceCal } = await loadFixture(withCalendars);
+    const date = dayStart(await middayTomorrow()) + DAY;
     await calendar.connect(alice).bookSlot(aliceCal, date, 2, 1n, CATEGORY);
-    await expect(calendar.connect(mallory).completeSlot(aliceCal, date, 2)).to.be.revertedWithCustomError(calendar, "NotCalendarOwner");
+    await expect(calendar.connect(alice).completeSlot(aliceCal, date, 2)).to.be.revertedWithCustomError(calendar, "NotMarketplace");
   });
 });

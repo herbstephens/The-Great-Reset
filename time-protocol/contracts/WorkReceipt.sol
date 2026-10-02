@@ -87,43 +87,8 @@ contract WorkReceipt is ERC721, ERC721Enumerable, ERC721URIStorage, AccessContro
     // ============ External Functions ============
     
     /**
-     * @notice Mint a work receipt NFT
+     * @notice Mint a work receipt recording the real worker and the real employer (the paying buyer)
      * @dev Only callable by authorized minters (UniversalCalendar)
-     */
-    function mint(
-        address to,
-        uint256 calendarId,
-        uint256 slotIndex,
-        uint256 date,
-        bytes32 workCategory,
-        uint256 rate
-    ) external onlyRole(MINTER_ROLE) nonReentrant returns (uint256) {
-        _tokenIdCounter++;
-        uint256 tokenId = _tokenIdCounter;
-        
-        receipts[tokenId] = Receipt({
-            calendarId: calendarId,
-            slotIndex: slotIndex,
-            date: date,
-            workCategory: workCategory,
-            rate: rate,
-            mintedAt: block.timestamp,
-            worker: to,
-            employer: msg.sender
-        });
-        
-        totalReceipts[to]++;
-        totalHoursProven[to]++;
-        
-        _safeMint(to, tokenId);
-        
-        emit ReceiptMinted(tokenId, to, calendarId, date, workCategory);
-        
-        return tokenId;
-    }
-    
-    /**
-     * @notice Mint receipt with employer address (alternative signature)
      */
     function mintWithEmployer(
         address worker,
