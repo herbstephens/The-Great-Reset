@@ -26,7 +26,7 @@ interface ITIMEToken {
         uint256 originalRate;
     }
     
-    function mint(address to, uint256 hours, MintMetadata calldata metadata) external returns (uint256);
+    function mint(address to, uint256 numHours, MintMetadata calldata metadata) external returns (uint256);
 }
 
 interface IWorkReceipt {
